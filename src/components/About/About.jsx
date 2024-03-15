@@ -2,7 +2,7 @@ import React from "react";
 import "./About.css";
 import AboutImg from "../../assets/JilImg.jpeg";
 import Info from "./Info";
-import CV from "../../assets/Resume.pdf";
+import CV from "../../assets/Jil_Patel_Resume.pdf";
 
 function About() {
   return (
@@ -18,9 +18,13 @@ function About() {
           <Info />
 
           <p className="about__description">
-            Frontend developer, I create web pages with UI / UX user interface,
-            I have knowledge in frameworks like jQuery, ReactJS, NodeJS and
-            backend technologies like MySQL and MongoDB.
+            I'm a passionate full-stack developer with expertise in PHP
+            (Laravel) for backend development and a flair for creating dynamic
+            and responsive user interfaces using Angular and React. My backend
+            toolkit includes Java (Spring Boot) and Node.js, allowing me to
+            build robust and efficient web applications. Explore my projects,
+            skills, and feel free to reach out—I'd love to collaborate on
+            exciting ventures! 🚀
           </p>
 
           <a href={CV} download="" className="button button--flex">

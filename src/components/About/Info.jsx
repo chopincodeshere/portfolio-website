@@ -9,7 +9,7 @@ function Info() {
       <div className="about__box">
         <EmojiEventsIcon className='about__icon' />
         <h3 className='about__title'>Experience</h3>
-        <span className='about__subtitle'>Fresher</span>
+        <span className='about__subtitle'>Junior Developer</span>
       </div>
 
       <div className="about__box">
