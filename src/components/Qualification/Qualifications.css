@@ -60,6 +60,16 @@
     margin-bottom: var(--mb-1);
 }
 
+.qualification__subtitle > a {
+    color: var(--text-color);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.qualification__subtitle > a:hover {
+    font-weight: bold;
+     transform: translateY(-2px);
+}
+
 .qualification__calender {
     font-size: var(--small-font-size);
     display: flex;

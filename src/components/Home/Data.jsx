@@ -56,13 +56,14 @@ function Data() {
         </svg>
       </h1>
 
-      <h3 className="home__subtitle">Web developer</h3>
+      <h3 className="home__subtitle">Software Engineer</h3>
       <p className="home__description">
-        I'm creative web developer based in Vadodara, and I'm very passionate
-        and dedicated to my work.
+        Software Engineer with more than 2.5 years of experience specializing in frontend
+        development and modern JavaScript frameworks. I focus on building
+        performant, scalable, and user-friendly applications.
       </p>
       <a href="#contact" className="button button--flex">
-        Say Hello
+        Get in Touch
         <svg
           class="button__icon"
           xmlns="http://www.w3.org/2000/svg"

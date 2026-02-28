@@ -7,7 +7,7 @@ function Social() {
   return (
     <div className="home__social">
       <a
-        href="https//:www.instagram.com"
+        href="https://www.instagram.com/haaaveyoumetjiiil/"
         className="home__social-icon"
         target="_blank"
         rel="noreferrer"

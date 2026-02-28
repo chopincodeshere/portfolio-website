@@ -3,17 +3,60 @@ import "./Services.css";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
-import LanguageIcon from '@mui/icons-material/Language';
+import LanguageIcon from "@mui/icons-material/Language";
 import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
-import LaptopWindowsIcon from '@mui/icons-material/LaptopWindows';
-import AssessmentIcon from '@mui/icons-material/Assessment';
+import LaptopWindowsIcon from "@mui/icons-material/LaptopWindows";
 
 function Services() {
   const [toggleState, setToggleState] = React.useState(0);
 
   const toggleTab = (index) => {
     setToggleState(index);
-  }
+  };
+
+  const services = [
+    {
+      id: 1,
+      Icon: LanguageIcon,
+      title: "Web Development",
+      modalTitle: "Web Development",
+      description:
+        "Building responsive and production-ready web applications with 2.5 years of hands-on experience.",
+      points: [
+        "Develop modern, reusable UI components using React, Angular and JavaScript.",
+        "Build responsive, accessible interfaces optimized for mobile and desktop.",
+        "Integrate frontend applications with REST APIs and backend services.",
+      ],
+    },
+    {
+      id: 2,
+      Icon: CodeRoundedIcon,
+      title: "Software Development",
+      modalTitle: "Software Development",
+      description:
+        "Delivering reliable software features end-to-end with a strong focus on clean code and maintainability.",
+      points: [
+        "Design and implement scalable application logic and business workflows.",
+        "Write readable, testable code and improve existing modules through refactoring.",
+        "Collaborate with teams to ship features, fix issues, and improve performance.",
+      ],
+    },
+    {
+      id: 3,
+      Icon: LaptopWindowsIcon,
+      title: "GenAI Development",
+      modalTitle: "GenAI Development",
+      description:
+        "Creating practical GenAI-powered solutions that improve user productivity and automation.",
+      points: [
+        "Build AI-assisted features like chat, summarization, and content generation.",
+        "Design prompt workflows and integrate LLM APIs into web applications.",
+        "Implement guardrails, evaluation checks, and iterative tuning for better outputs.",
+      ],
+    },
+  ];
+
+  const activeService = services.find((service) => service.id === toggleState);
 
   return (
     <section className="services section" id="services">
@@ -21,168 +64,44 @@ function Services() {
       <span className="section__subtitle">What I offer</span>
 
       <div className="services__container container grid">
-        <div className="services__content">
-          <div>
-            <LanguageIcon className="services__icon" />
-            <h3 className="services__title">
-              Web <br /> Developer
-            </h3>
+        {services.map((service) => (
+          <div className="services__content" key={service.id}>
+            <div>
+              <service.Icon className="services__icon" />
+              <h3 className="services__title">{service.title}</h3>
+            </div>
+
+            <span className="services__button" onClick={() => toggleTab(service.id)}>
+              View More <EastOutlinedIcon className="services__button-icon" />
+            </span>
           </div>
-          <span className="services__button" onClick={() => toggleTab(1)}>
-            View More <EastOutlinedIcon className="services__button-icon" />
-          </span>
+        ))}
+      </div>
 
-          <div className={toggleState === 1 ? "services__modal active-modal" : "services__modal"}>
-            <div className="services__modal-content">
-              <CloseOutlinedIcon className="services__modal-close" onClick={() => setToggleState(0)} />
+      <div
+        className={toggleState > 0 ? "services__modal active-modal" : "services__modal"}
+        onClick={() => setToggleState(0)}
+      >
+        {activeService && (
+          <div className="services__modal-content" onClick={(event) => event.stopPropagation()}>
+            <CloseOutlinedIcon
+              className="services__modal-close"
+              onClick={() => setToggleState(0)}
+            />
 
-              <h3 className="services__modal-title">Web Developer</h3>
-              <p className="services__modal-description">
-                Providing quality work to clients and companies
-              </p>
+            <h3 className="services__modal-title">{activeService.modalTitle}</h3>
+            <p className="services__modal-description">{activeService.description}</p>
 
-              <ul className="services__modal-services">
-                <li className="services__modal-service">
+            <ul className="services__modal-services">
+              {activeService.points.map((point) => (
+                <li className="services__modal-service" key={point}>
                   <TaskAltOutlinedIcon className="services__modal-icon" />
-                  <p className="services__modal-info">
-                    I develop the user interface.
-                  </p>
+                  <p className="services__modal-info">{point}</p>
                 </li>
-
-                <li className="services__modal-service">
-                  <TaskAltOutlinedIcon className="services__modal-icon" />
-                  <p className="services__modal-info">
-                    I develop Responsive Websites.
-                  </p>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
           </div>
-        </div>
-
-        <div className="services__content">
-          <div>
-            <CodeRoundedIcon className="services__icon" />
-            <h3 className="services__title">
-              App <br /> Developer
-            </h3>
-          </div>
-
-          <div>
-            <span className="services__button" onClick={() => toggleTab(2)}>
-              View More <EastOutlinedIcon className="services__button-icon" />
-            </span>
-
-            <div className={toggleState === 2 ? "services__modal active-modal" : "services__modal"}>
-              <div className="services__modal-content">
-                <CloseOutlinedIcon className="services__modal-close" onClick={() => setToggleState(0)} />
-
-                <h3 className="services__modal-title">App Developer</h3>
-                <p className="services__modal-description">
-                  Providing quality work to clients and companies
-                </p>
-
-                <ul className="services__modal-services">
-                  <li className="services__modal-service">
-                    <TaskAltOutlinedIcon className="services__modal-icon" />
-                    <p className="services__modal-info">
-                      I develop the user interface.
-                    </p>
-                  </li>
-
-                  <li className="services__modal-service">
-                    <TaskAltOutlinedIcon className="services__modal-icon" />
-                    <p className="services__modal-info">
-                      I develop Responsive Websites.
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="services__content">
-          <div>
-            <LaptopWindowsIcon className="services__icon" />
-            <h3 className="services__title">
-              Python <br /> Developer
-            </h3>
-          </div>
-          <div>
-            <span className="services__button" onClick={() => toggleTab(3)}>
-              View More <EastOutlinedIcon className="services__button-icon" />
-            </span>
-
-            <div className={toggleState === 3 ? "services__modal active-modal" : "services__modal"}>
-              <div className="services__modal-content">
-                <CloseOutlinedIcon className="services__modal-close" onClick={() => setToggleState(0)} />
-
-                <h3 className="services__modal-title">Visual designer</h3>
-                <p className="services__modal-description">
-                  Providing quality work to clients and companies
-                </p>
-
-                <ul className="services__modal-services">
-                  <li className="services__modal-service">
-                    <TaskAltOutlinedIcon className="services__modal-icon" />
-                    <p className="services__modal-info">
-                      I develop the user interface.
-                    </p>
-                  </li>
-
-                  <li className="services__modal-service">
-                    <TaskAltOutlinedIcon className="services__modal-icon" />
-                    <p className="services__modal-info">
-                      I develop Responsive Websites.
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="services__content">
-          <div>
-            <AssessmentIcon className="services__icon" />
-            <h3 className="services__title">
-              Data <br /> Analyst
-            </h3>
-          </div>
-          <div>
-            <span className="services__button" onClick={() => toggleTab(4)}>
-              View More <EastOutlinedIcon className="services__button-icon" />
-            </span>
-
-            <div className={toggleState === 4 ? "services__modal active-modal" : "services__modal"}>
-              <div className="services__modal-content">
-                <CloseOutlinedIcon className="services__modal-close" onClick={() => setToggleState(0)} />
-
-                <h3 className="services__modal-title">Data Analyst</h3>
-                <p className="services__modal-description">
-                  Providing quality work to clients and companies
-                </p>
-
-                <ul className="services__modal-services">
-                  <li className="services__modal-service">
-                    <TaskAltOutlinedIcon className="services__modal-icon" />
-                    <p className="services__modal-info">
-                      I develop the user interface.
-                    </p>
-                  </li>
-
-                  <li className="services__modal-service">
-                    <TaskAltOutlinedIcon className="services__modal-icon" />
-                    <p className="services__modal-info">
-                      I develop Responsive Websites.
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );

@@ -4,8 +4,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import WorkIcon from "@mui/icons-material/Work";
-// import AssignmentIcon from "@mui/icons-material/Assignment";
+import AssignmentIcon from "@mui/icons-material/Assignment";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
+import RateReviewIcon from "@mui/icons-material/RateReview";
 import CloseIcon from "@mui/icons-material/Close";
 import AppsIcon from "@mui/icons-material/Apps";
 
@@ -82,14 +83,28 @@ function Header() {
               </a>
             </li>
 
-            {/* <li className="nav__item">
-              <a href="#portfolio" className="nav__link">
+            <li className="nav__item">
+              <a href="#projects" className={
+                  activeNav === "#projects" ? "nav__link active-link" : "nav__link"
+                }
+                onClick={() => setActiveNav("#projects")}>
                 <div className="nav__icon">
                   <AssignmentIcon />
-                </div>{" "}
-                Portfolio
+                </div>
+                Projects
               </a>
-            </li> */}
+            </li>
+            <li className="nav__item">
+              <a href="#testimonials" className={
+                  activeNav === "#testimonials" ? "nav__link active-link" : "nav__link"
+                }
+                onClick={() => setActiveNav("#testimonials")}>
+                <div className="nav__icon">
+                  <RateReviewIcon />
+                </div>
+                Testimonials
+              </a>
+            </li>
 
             <li className="nav__item">
               <a href="#contact" className={

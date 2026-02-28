@@ -29,7 +29,7 @@ function Footer() {
 
         <div className="footer__social">
           <a
-            href="https//:www.instagram.com"
+            href="https://www.instagram.com/haaaveyoumetjiiil//"
             className="footer__social-link"
             target="_blank"
             rel="noreferrer"

@@ -1,6 +1,6 @@
 ========== HOME ==========
 .home__social-link
-https://www.instagram.com/
+https://www.instagram.com/haaaveyoumetjiiil//
 https://dribbble.com/
 https://github.com/
 
@@ -191,7 +191,7 @@ Testimonials
 
 .footer__social-link
 https://www.facebook.com/
-https://www.instagram.com/
+https://www.instagram.com/haaaveyoumetjiiil//
 https://twitter.com/
 
 .footer__copy

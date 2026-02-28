@@ -1,44 +1,76 @@
-import React from 'react';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./Testimonials.css";
 import { Data } from "./Data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 
 function Testimonials() {
-  return (
-    <section className="testimonial container section">
-        <h2 className="section__title">My Clients say</h2>
-        <span className="section__subtitle">Testimonial</span>
+  const isSingleTestimonial = Data.length === 1;
 
-        <Swiper className="testimonial__container"
-            loop={true}
+  return (
+    <section className="testimonial section" id="testimonials">
+        <h2 className="section__title">Client Testimonials</h2>
+        <span className="section__subtitle">What people I worked with say</span>
+
+        <Swiper className={`testimonial__container container ${isSingleTestimonial ? "testimonial__container--single" : ""}`}
+            loop={!isSingleTestimonial}
             grabCursor={true}
-            spaceBetween={24}
+            centeredSlides={true}
+            slidesPerView={1}
+            spaceBetween={28}
+            autoplay={
+                isSingleTestimonial
+                  ? false
+                  : {
+                      delay: 3800,
+                      disableOnInteraction: false,
+                      pauseOnMouseEnter: true,
+                    }
+            }
             pagination={{
                 clickable: true,
             }}
-            breakpoints={{
-                576: {
-                    slidesPerView: 2,
-                },
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 48,
-                },
-            }}
-            modules={[Pagination]}
+            breakpoints={
+                isSingleTestimonial
+                  ? {}
+                  : {
+                      640: {
+                          slidesPerView: 2,
+                          centeredSlides: false,
+                      },
+                      992: {
+                          slidesPerView: 2,
+                          spaceBetween: 32,
+                          centeredSlides: false,
+                      },
+                    }
+            }
+            modules={[Pagination, Autoplay]}
         >
-            {Data.map(({id, image, title, description}) => {
+            {Data.map(({id, image, title, role, description}) => {
                 return (
-                    <SwiperSlide className="testimonial__card" key={id}>
-                        <img src={image} className="testimonial__img" />
-
+                  <SwiperSlide className="testimonial__card" key={id}>
+                    <div className="testimonial__profile">
+                      {image ? (
+                        <img
+                          src={image}
+                          className="testimonial__img"
+                          alt={`${title} profile`}
+                        />
+                      ) : (
+                        <AccountCircleIcon className="testimonial__img-icon" />
+                      )}
+                      <div>
                         <h3 className="testimonial__name">{title}</h3>
-                        <p className="testimonial__description">{description}</p>
-                    </SwiperSlide>
-                )
+                        <span className="testimonial__role">{role}</span>
+                      </div>
+                    </div>
+
+                    <p className="testimonial__description">{description}</p>
+                  </SwiperSlide>
+                );
             })}
         </Swiper>
     </section>
